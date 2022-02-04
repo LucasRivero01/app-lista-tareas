@@ -84,8 +84,52 @@ const leerEntrada = async(mensaje) => {
    return desc;
 }
 
+// recibo las tareas como un arreglo
+const listadoTareasBorrar = async (tareas = []) => {
+   
+   const choices = tareas.map((tarea, i) => {
+      const indice = `${i + 1}`.green;
+      return {
+         value: tarea.id,
+         name: `${indice} ${tarea.desc}`
+      }
+   });
+   // se agrega al principio del arreglo
+   choices.unshift({
+      value: '0',
+      name: '0.'.green + 'Cancelar'
+   });
+   
+   const preguntas = [
+      {
+         type: 'list',
+         name: 'id',
+         message: 'Borrar',
+         choices
+      }
+   ]
+
+   const {id} = await inquirer.prompt(preguntas);
+
+   return id
+}
+
+const confirmar = async (message) => {
+   const pregunta = [
+      {
+         type: 'confirm',
+         name: 'ok',
+         message
+      }
+   ]
+   const {ok} = await inquirer.prompt(pregunta);
+   return ok;
+}
+
 module.exports = {
    inquirerMenu,
    pausa,
-   leerEntrada
+   leerEntrada,
+   listadoTareasBorrar,
+   confirmar
 }
