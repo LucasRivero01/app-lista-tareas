@@ -43,7 +43,6 @@ const pausa = ()=>{
          resolve();
       })
    })
-
 }
 
 module.exports = {
