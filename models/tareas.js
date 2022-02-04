@@ -68,6 +68,23 @@ class Tareas{
          }
       })
    }
+   // recibo un arreglo con id
+   toggleCompletadas(ids = []){
+      ids.forEach (id => {
+         const tarea = this._listado[id];
+         if (!tarea.completadoEn){
+            tarea.completadoEn = new Date().toISOString();
+         }
+      })
+
+      this.listadoArr.forEach(tarea => {
+         // evaluo si el id de la tarea en la que estoy
+         // posicionado no esta en el arreglo ids
+         if (!ids.includes(tarea.id)){
+            this._listado[tarea.id].completadoEn = null;
+         }
+      })
+   }
 }
 
 module.exports = Tareas;
