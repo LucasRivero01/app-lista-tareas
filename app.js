@@ -1,4 +1,4 @@
-const { guardarDatos } = require('./helpers/guardarArchivo');
+const { guardarDatos, leerDB } = require('./helpers/guardarArchivo');
 const { inquirerMenu, pausa, leerEntrada } = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
@@ -12,6 +12,14 @@ const main = async() => {
    let opt = '';
 
    const tareas =  new Tareas();
+
+   const tareasLeidas = leerDB();
+   if (tareasLeidas){
+      // establecer las tareas
+   }
+   
+   // es para evitar que se limpie la pantalla y no se vean las tareas
+   await pausa();
    // se ejecuta mientras opt sea distinto de 0
    do {
       // espero hasta que la funcion retorne un valor
