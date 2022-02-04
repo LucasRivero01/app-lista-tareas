@@ -15,11 +15,10 @@ const main = async() => {
 
    const tareasLeidas = leerDB();
    if (tareasLeidas){
-      // establecer las tareas
+      // le paso por parametro las tareas
+      tareas.cargarTareasFromArray(tareasLeidas);
    }
-   
-   // es para evitar que se limpie la pantalla y no se vean las tareas
-   await pausa();
+
    // se ejecuta mientras opt sea distinto de 0
    do {
       // espero hasta que la funcion retorne un valor
@@ -31,7 +30,7 @@ const main = async() => {
              tareas.crearTarea(ingresarDesc)
          break;
          case '2':
-            console.log(tareas.listadoArr);
+            tareas.listadoCompleto();
          break;
       }
       guardarDatos(tareas.listadoArr);
