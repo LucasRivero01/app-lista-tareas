@@ -12,7 +12,6 @@ const leerDB = () => {
    }
    const datos = fs.readFileSync(archivoSalida, {encoding: 'utf-8'});
    const resultado = JSON.parse(datos);
-   console.log(resultado);
    return resultado;
 }
 
