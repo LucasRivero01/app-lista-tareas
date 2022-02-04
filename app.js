@@ -10,7 +10,6 @@ console.clear()
 
 const main = async() => {
    let opt = '';
-
    const tareas =  new Tareas();
 
    const tareasLeidas = leerDB();
@@ -32,6 +31,14 @@ const main = async() => {
          case '2':
             tareas.listadoCompleto();
          break;
+         case '3':
+            
+            tareas.listarPendientesCompletadas();
+         break
+         case '4':
+            const completado = false;
+            tareas.listarPendientesCompletadas(false);
+         break
       }
       guardarDatos(tareas.listadoArr);
       await pausa();
