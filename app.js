@@ -1,3 +1,4 @@
+const { guardarDatos } = require('./helpers/guardarArchivo');
 const { inquirerMenu, pausa, leerEntrada } = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
@@ -25,6 +26,7 @@ const main = async() => {
             console.log(tareas.listadoArr);
          break;
       }
+      guardarDatos(tareas.listadoArr);
       await pausa();
    } while( opt !== '0')
  
